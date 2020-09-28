@@ -191,7 +191,7 @@ func (b *ecsAPIService) convert(project *types.Project) (*cloudformation.Templat
 
 	for _, service := range project.Services {
 
-		definition, err := convert(project, service)
+		definition, err := b.createTaskDefinition(project, service)
 		if err != nil {
 			return nil, nil, err
 		}
